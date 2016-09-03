@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Post>
+@{
+    ViewBag.Title = "Timeline";
+}
+
+<div class="inner-wrapper">
+    @foreach (var post in Model)
+    {
+        @Html.Partial("~/Views/Post/_DisplayPost.cshtml", post)
+    }
+</div>

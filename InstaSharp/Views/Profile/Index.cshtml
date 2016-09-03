@@ -1,0 +1,61 @@
+﻿@model ProfileViewModel
+
+@{
+    ViewBag.Title = String.Format("@{0}", Model.User.UserName);
+}
+
+<div class="wrapper">
+    <div class="profile__top">
+        <div class="profile__head-left">
+            <img src="@Url.Content(String.Format("~/Images/{0}", Model.User.GetPhoto()))" />
+        </div>
+        <div class="profile__head-right">
+            <h1>@Model.User.UserName</h1>
+
+            @if (Model.OwnProfile)
+            {
+                <a class="button" href="@Url.Action("Logoff", "Account")">Logout</a>
+            }
+            else
+            {
+                <a class="button follow-button @(Model.Following ? "following" : string.Empty)"
+                   href="@Url.Action(Model.Following ? "Unfollow" : "Follow", "Follow", new { userName = Model.User.UserName })">
+                    @(Model.Following ? "Following" : "Follow")
+                </a>
+            }
+
+            <p>
+                @if (!String.IsNullOrEmpty(Model.User.RealName))
+                {
+                    <strong>@Model.User.RealName</strong>
+                }
+                @Model.User.Bio
+            </p>
+            <ul class="profile__meta">
+                <li><strong>@Model.PostCount</strong> posts</li>
+                <li><strong>@Model.FollowerCount</strong> followers</li>
+                <li><strong>@Model.FollowingCount</strong> following</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="profile__bottom">
+        @if (Model.User.Posts != null && Model.User.Posts.Any())
+        {
+            <ol>
+                @foreach (var post in Model.User.Posts)
+                {
+                    <li>
+                        <a href="@Url.Action("Details", "Post", new { @id = post.Id })">
+                            <img src="@Url.Content(String.Format("~/Images/Uploads/{0}/{1}", Model.User.UserName, post.Image))" />
+                        </a>
+                    </li>
+                }
+            </ol>
+        }
+        else
+        {
+            <p class="gray">@(Model.User.UserName) hasn't shared anything yet.</p>
+        }
+    </div>
+</div>

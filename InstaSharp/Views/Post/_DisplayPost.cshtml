@@ -1,0 +1,36 @@
+﻿@model Post
+
+@{
+    var likedModel = Model.Likes.FirstOrDefault(l => l.User.UserName == User.Identity.Name) != null;
+}
+
+<div class="post">
+    <div class="post__top">
+        <a href="@Url.Action("Index", "Profile", new { @id = Model.User.UserName })">
+            <img src="@Url.Content(String.Format("~/Images/{0}", Model.User.GetPhoto()))" />
+        </a>
+        <a href="@Url.Action("Index", "Profile", new { @id = Model.User.UserName })" class="post__user">
+            @Model.User.UserName
+        </a>
+        <time>@Model.Timestamp.ToShortDateString()</time>
+    </div>
+
+    <a href="@Url.Action("Details", "Post", new { @id = Model.Id })" class="post__img">
+        <img src="@Url.Content(String.Format("~/Images/Uploads/{0}/{1}", Model.User.UserName, Model.Image))" />
+    </a>
+
+    <div class="post__bottom">
+        <div class="post__likes">
+            <a href="javascript:;" class="like-button @(likedModel ? "liked" : String.Empty)">
+                <i class="fa fa-heart-o"></i>
+            </a>
+            <strong><span class="num-likes">@Model.Likes.Count()</span> likes</strong>
+        </div>
+
+        <p class="post__meta">@Model.Description</p>
+
+        @Html.Partial("~/Views/Post/_Comments.cshtml", Model.Comments)
+
+        @Html.Partial("~/Views/Post/_AddComment.cshtml", Model)
+    </div>
+</div>

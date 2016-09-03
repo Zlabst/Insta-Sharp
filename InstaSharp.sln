@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaSharp", "InstaSharp\InstaSharp.csproj", "{A3308E02-BB10-43E5-A680-8AFF3911A693}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaSharp.Data", "InstaSharp.Data\InstaSharp.Data.csproj", "{11E2A576-C69F-4BFE-BF99-BB3E66A6FB60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3308E02-BB10-43E5-A680-8AFF3911A693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3308E02-BB10-43E5-A680-8AFF3911A693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3308E02-BB10-43E5-A680-8AFF3911A693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3308E02-BB10-43E5-A680-8AFF3911A693}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11E2A576-C69F-4BFE-BF99-BB3E66A6FB60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11E2A576-C69F-4BFE-BF99-BB3E66A6FB60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11E2A576-C69F-4BFE-BF99-BB3E66A6FB60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11E2A576-C69F-4BFE-BF99-BB3E66A6FB60}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
+	EndGlobalSection
+EndGlobal

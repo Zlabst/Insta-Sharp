@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Comment>
+
+@if (Model != null && Model.Any())
+{
+    if (Model.Count() > 5)
+    {
+        <a class="post__view-comments" href="javascript:;">view all @Model.Count() comments</a>
+    }
+
+    <ol class="post__comments">
+        @* Show up to the first 5 comments *@
+        @foreach (var comment in Model.OrderByDescending(c => c.Timestamp).Take(5))
+        {
+            <li>
+                <strong>
+                    <a href="@Url.Action("Index", "Profile", new { @id = comment.User.UserName })">
+                        @comment.User.UserName
+                    </a>
+                </strong>
+                &nbsp;@comment.Message
+            </li>
+        }
+
+        @* Hide the remaining comments *@
+        @foreach (var comment in Model.OrderByDescending(c => c.Timestamp).Skip(5))
+        {
+            <li class="hidden">
+                <strong>
+                    <a href="@Url.Action("Index", "Profile", new { @id = comment.User.UserName })">
+                        @comment.User.UserName
+                    </a>
+                </strong>
+                &nbsp;@comment.Message
+            </li>
+        }
+    </ol>
+}
+else
+{
+    <ol id="post__comments"></ol>
+}

@@ -1,0 +1,31 @@
+﻿@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("", "", FormMethod.Get, new { @class = "search-form" }))
+    {
+        <input type="text" name="s" id="s" placeholder="Search" autocomplete="off" spellcheck="false" />
+    }
+
+    <ul class="menu-actions">
+        @*<li><a href="#" title="Search" class="search-button"><i class="fa fa-search"></i></a></li>*@
+        <li><a href="@Url.Action("Create", "Post")" title="Upload"><i class="fa fa-camera"></i></a></li>
+        <li><a href="#" title="Explore"><i class="fa fa-globe"></i></a></li>
+        <li>
+            <a href="#" title="Notifications">
+                <i class="fa fa-heart-o"></i>
+                <span class="count">@Html.Action("Count", "Notification")</span>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Profile", new { @id = String.Empty })" title="Profile">
+                <i class="fa fa-user"></i>
+            </a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="menu-actions">
+        <li><a href="@Url.Action("Login", "Account")" title="Login"><i class="fa fa-sign-in"></i></a></li>
+        <li><a href="@Url.Action("Register", "Account")" title="Upload"><i class="fa fa-user"></i></a></li>
+    </ul>
+}
